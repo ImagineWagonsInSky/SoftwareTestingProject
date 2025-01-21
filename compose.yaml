@@ -1,0 +1,11 @@
+services:
+  service-name:
+    build: .
+    ports:
+      - "8080:8080"
+    volumes:
+    # To reflect changes directly in container directory
+      - ./src:/app/src
+      - ./target:/app/target
+    networks:
+      default:
