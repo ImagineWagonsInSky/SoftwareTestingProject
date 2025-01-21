@@ -42,6 +42,13 @@ Here I detail what is to be tested for each requirement in order of priority
     - The distance in degrees between a pair of points in Longitude and Latitude.
     - Whether two points are close together. *Close* is defined as a set distance of 0.00015 degrees or less.
     - The next position for a point given an angle. The drone is set to move 0.00015 degrees per move.
-    - If a point is within a given region, including its border, defined as polygon with a set of points as its vertices.
+    - Whether a point is within a given region, including its border, defined as polygon with a set of points as its vertices.
   - These can be unit tested with manually generated values.
-  - R1 and R2 will need to be tested together after unit testing is concluded since a path should not be calculated without being given a valid order first. All the information for both requirements will be contained in the order.
+  - R1 and R2 will need to be tested together after unit testing is concluded since a path should not be calculated without being given a valid order first. All the information for both requirements will be contained in the order and checked with the REST API server.
+  - These two are the main priority for testing to ensure they are solid before moving to anything else.
+
+- R3: The system will read data from our given REST API server.
+  - This requirement is important since it is what we check against to validate orders in R1 and where we get the coordinates of objects from for pathfinding in R2.
+  - It also contains a useful list of extensive order examples (valid and invalid) which we can retrieve for testing.
+  - This requirement is mainly to be tested at the integration level since other systems rely on it, but we can do some unit testing to ensure communication with the REST API server is fully functioning.
+  - 
