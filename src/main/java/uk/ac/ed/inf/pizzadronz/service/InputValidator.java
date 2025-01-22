@@ -75,7 +75,7 @@ public class InputValidator {
      * @param pizza the pizza to validate
      * @return true if the pizza is invalid, false otherwise
      */
-    private static boolean isNotValidPizza(Pizza pizza) {
+    public static boolean isNotValidPizza(Pizza pizza) {
         return pizza == null || pizza.name() == null;
     }
 
