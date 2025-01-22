@@ -51,4 +51,23 @@ Here I detail what is to be tested for each requirement in order of priority
   - This requirement is important since it is what we check against to validate orders in R1 and where we get the coordinates of objects from for pathfinding in R2.
   - It also contains a useful list of extensive order examples (valid and invalid) which we can retrieve for testing.
   - This requirement is mainly to be tested at the integration level since other systems rely on it, but we can do some unit testing to ensure communication with the REST API server is fully functioning.
-  - 
+  - The system must:
+    - Fetch restaurant data, which includes name, coordinates, menu items and opening days which will be used for order validation (R1) and drone navigation (R2).
+    - Fetch the University's Central Area coordinates.
+    - Fetch the no-fly zones' coordinates.
+  - We can unit test each of the data points we are fetching.
+  - Then we can continue with some integration testing on `InputValidator.java` and `PathCalculator.java` which rely on the fetched data.
+
+- R4: The system must produce a response to a request in less than 60s.
+  - Not as prioritised, but it should be met for efficiency.
+  - We need a completed system so testing will likely be late (hence why it is not a main priority)
+  - Easily testable with system `MockMVC` tests.
+  - It will require the most amount of testing in the pathfinding endpoint, but we can mostly assume that all coordinates provided will be reasonably close together (within Edinburgh) since the drones are to operate exclusively around the university campus.
+  - So randomised coordinates for tests (around the area) as well as some carefully crafted ones will be generated to test performance.
+
+
+## Scaffolding and Instrumentation
+Here we describe the scaffolding and implementation needed in order to carry out the given tasks.
+It will be helpful to scaffold sample orders and restaurants. For R1 we have a big list of orders that we can fetch from the REST API server and can be used as scaffolding for testing. It helps that they are made to have all sorts of errors present in them as well as some valid orders.
+For R2 we will also use scaffolding to generate random coordinates for the drone navigation system.
+There will be no scaffolding for the rest of the requirements.
