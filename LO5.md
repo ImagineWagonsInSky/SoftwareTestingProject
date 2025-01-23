@@ -1,1 +1,23 @@
 # Learning Outcome 5
+This document explains possible approaches to Reviews and Inspections and Design and Implement
+Automated testing Processes in the Pizzadronz project.
+
+## Review criteria
+Code reviews and inspections should focus on critical parts of the system, targeting maintainability, modularity, and adherence to coding standards. Review criteria should include ensuring a clear separation of concerns, adherence to SOLID principles, efficient resource use, and robustness in handling edge cases. Automated tools like Checkstyle and SonarQube should be employed to identify common issues such as unused imports, code smells, and potential bugs. Additionally, peer reviews should evaluate logical consistency, readability, and overall code clarity.
+
+Issues like tightly coupled logic in validation methods and redundant data-fetching logic should be identified during reviews. For example, repeated calls to fetch restaurant data could be refactored by introducing caching mechanisms in the PathDataService. Hardcoded configurations should be replaced with centralized configurations in AppConfig to improve maintainability. Implementing these changes, followed by thorough automated testing—such as integration tests and code coverage analysis—would ensure that the improvements are effective and the overall code quality meets high standards.
+
+## Construct a CI pipeline
+An appropriate CI pipeline for PizzaDronz would automate essential stages of the software development lifecycle, ensuring code quality, functional correctness, and efficient deployment. The pipeline would begin by integrating with a source control platform like GitHub, automatically triggering builds on every commit or pull request. The pipeline would first verify the integrity of the project by building it with Maven, resolving dependencies, and validating the codebase. Static analysis tools like SonarQube would run to enforce coding standards and detect potential issues, while automated unit and integration tests would validate key functionalities such as order validation and pathfinding. Performance tests using tools like JMeter would measure endpoint responsiveness under simulated loads, while security scans like OWASP Dependency-Check would ensure the application remains free of known vulnerabilities.
+
+Once all checks pass, the pipeline would package the application into a Docker container and store the image in an artifact repository for traceability. The container would then be deployed to a staging environment for further testing, with tools like Terraform or Ansible automating this process. Monitoring solutions, such as Prometheus or the ELK stack, would track performance and detect issues post-deployment. A pipeline like such would ultimately improve the overall quality and stability of the software for Continuous Integration.
+
+## Automating tests
+To automate testing in the CI pipeline, all critical tests, including unit, integration, and performance tests, should run automatically on every code commit or pull request. Unit tests would validate individual components like validation logic, while integration tests would ensure proper interaction between services and controllers. Performance tests, focused on response times for key endpoints, would detect regressions under load.
+
+Embedding these tests in the pipeline requires tools like JUnit for functional tests, MockMvc for API tests, and JMeter for performance testing. The pipeline should enforce a sufficient code coverage threshold and flag failing tests or coverage drops to maintain quality. Automating these processes ensures rapid feedback and early detection of issues, critical for maintaining a reliable and scalable application.
+
+## Demonstrating CI pipeline
+The proposed CI pipeline would identify issues such as syntax errors, failing tests, performance regressions, and security vulnerabilities. For example, a missing semicolon or improper import would fail during the build stage, while incorrect validation logic would be caught by failing unit tests. Integration tests would detect misconfigured endpoints or unexpected API responses, and performance tests could flag slow pathfinding calculations under load.
+
+These issues would be identified through automated logs and reports generated at each stage of the pipeline. Static analysis tools like SonarQube would highlight code smells and potential bugs, while test reports from JUnit or MockMvc would pinpoint failed assertions. Security scans would flag vulnerable dependencies with detailed remediation advice. This automation ensures quick identification and resolution of issues, maintaining high-quality code.
