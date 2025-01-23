@@ -69,5 +69,5 @@ Here I detail what is to be tested for each requirement in order of priority
 ## Scaffolding and Instrumentation
 Here we describe the scaffolding and implementation needed in order to carry out the given tasks.
 It will be helpful to scaffold sample orders and restaurants. For R1 we have a big list of orders that we can fetch from the REST API server and can be used as scaffolding for testing. It helps that they are made to have all sorts of errors present in them as well as some valid orders.
-For R2 we will also use scaffolding to generate random coordinates for the drone navigation system.
+For R2 we will also use scaffolding to generate random coordinates for the drone navigation system, but most importantly some carefully selected coordinates for no-fly zones like dead alleyways.
 There will be no scaffolding for the rest of the requirements.
